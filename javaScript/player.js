@@ -2,9 +2,8 @@ class player{
 
 constructor(){
 
-this.node = document.createElement("div")
+this.node = document.querySelector("#player")
 
-playerBox.append(this.node)
 
 
 this.x = 70;
