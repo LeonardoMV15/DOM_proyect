@@ -1,0 +1,34 @@
+
+.title {
+    font-size: 50px;
+    text-align: center;
+    color: white  ;
+}
+
+#endView {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+#startView{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+#gameView{
+    display: none;
+    justify-content: center;
+    background-color: red;
+width: 600px;
+  height: 600px;
+
+  position: relative; 
+  overflow: hidden; 
+  user-select: none
+
+}
