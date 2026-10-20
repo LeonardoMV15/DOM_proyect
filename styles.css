@@ -1,34 +1,128 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .title {
-    font-size: 50px;
+    max-width: 1000px;
+    margin: 0;
+    font-size: 42px;
+    line-height: 1.5;
     text-align: center;
-    color: white  ;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 4px 4px 0 #ff3b69;
+
 }
 
 #endView {
     display: none;
-    flex-direction: column;
-    align-items: center;
 }
-#startView{
-    display: flex;
+#startView,
+#endView {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 22px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100dvh;
+    padding: 32px 24px;
+}
+#startView {
+    display: flex;
+}
+.start-image {
+    width: 100%;
+    max-width: 500px;
+    height: 260px;
+    max-height: 30vh;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+#startButton,
+#RestartButton {
+    padding: 20px 32px;
+    border: 4px solid #fff;
+    background-color: #ffd43b;
+    box-shadow: 6px 6px 0 #ff3b69;
+    color: #161616;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+#startButton:hover,
+#startButton:focus-visible,
+#RestartButton:hover,
+#RestartButton:focus-visible {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0 #ff3b69;
+}
+#endView p {
+    margin: 0;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: center;
+}
+.game-instructions {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: min(100%, 900px);
+}
+.game-instructions p {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 88px;
+    margin: 0;
+    padding: 14px;
+    border: 2px solid #35d6ed;
+    background-color: rgb(0 0 0 / 78%);
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: center;
 }
 body{
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     background-color: black;
+      background-image: url("./images/background.png");
+margin: 0;
+}
+@media (max-width: 650px) {
+    .title {
+        font-size: 24px;
+    }
+    .start-image {
+        max-height: 22vh;
+    }
+    #startButton,
+    #RestartButton {
+        padding: 16px 22px;
+        font-size: 16px;
+    }
+    .game-instructions {
+        flex-direction: column;
+    }
+    .game-instructions p {
+        min-height: 64px;
+        font-size: 10px;
+    }
 }
 #gameView{
     display: none;
     justify-content: center;
-    background-color: red;
-width: 600px;
-  height: 600px;
-
+ width: 100vw;
+height: 100dvh;
   position: relative; 
-  overflow: hidden; 
+  overflow: hidden;  
   user-select: none
-
+  
 }

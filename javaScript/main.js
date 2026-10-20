@@ -4,18 +4,19 @@ const gameScreen = document.querySelector("#gameView")
 const endScreen = document.querySelector("#endView")
 const startBtn = document.querySelector("#startButton")
 const restartBtn = document.querySelector("#RestartButton")
+const scoreBox = document.querySelector("#score")
 
 
 let playerObj
 let rockArray = []
 let shotArr = []
+let score 
 
 function addRock(){
 
     let randomPosX = Math.floor(Math.random() * 550)
-        let randomWidth = Math.floor(Math.random() * 75)
-        let randomHeight = Math.floor(Math.random() * 75)
-        let newRock = new enemyRock(randomPosX , randomWidth, randomHeight)
+        let randomWidth = Math.floor(Math.random() * (75-50)+50)
+        let newRock = new enemyRock(randomPosX , randomWidth, randomWidth )
         rockArray.push(newRock)
 }
 
@@ -85,6 +86,9 @@ function checkCollisionPlayerEnemey(){
         if (checkCollision(shot, enemy)) {
             shot.node.remove();
             enemy.node.remove();
+            score++
+            addScore()
+
 
             shotArr.splice(shotIndex, 1);
             rockArray.splice(enemyIndex, 1);
@@ -97,6 +101,9 @@ function checkCollisionPlayerEnemey(){
 function gameOver(){
 
     rockArray.forEach((rock) => {rock.node.remove()})
+    shotArr.forEach((shot) => {shot.node.remove()})
+    score = 0
+
     clearInterval(mainItervalId)
     clearInterval(enemyItervalId)
 
@@ -116,6 +123,13 @@ function shot (){
         playerObj.y - 20
     );
     shotArr.push(newShot);
+}
+
+
+function addScore(){
+
+        scoreBox.innerText = score
+
 }
 
 

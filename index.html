@@ -12,7 +12,12 @@
  <div id="startView">
 
         <h1 class="title text">Welcome to the War, are u ready ?</h1>
+        <img class="start-image" src="./images/startGameImg.png" alt="">
         <button id="startButton">Start</button>
+        <div class="game-instructions">
+            <p>Dodge and take out the obstacles, Captain</p>
+            <p>Don't let the enemy ships get through</p>
+        </div>
 
 </div> 
 
@@ -20,6 +25,7 @@
  <div id="endView">
 
 <h1 class="title text">GAME OVER</h1>
+<img class="start-image" src="./images/gameOverImg.png" alt="">
 <P>Result: <span id="result_number">888</span></P>
 
 <button id="RestartButton">Restart Game</button>
@@ -27,7 +33,8 @@
 </div>
 
 <div id="gameView">
-<div id="player"></div>
+    <h3>Points: <span id="score"></span></h3>
+<img id="player" src="./images/spaceShip.png" alt="">
 </div>
     <script src="./javaScript/shot.js"></script>
      <script src="./javaScript/enemy1.js"></script>

@@ -1,8 +1,9 @@
 class enemyRock{
 
-constructor(posX, width,height){
+constructor(posX, width, height){
 
-    this.node = document.createElement("div")
+    this.node = document.createElement("img")
+    this.node.src = "./images/rock.png";
     gameBox.append(this.node)
 
     this.node.className ="Rock"
@@ -14,7 +15,6 @@ constructor(posX, width,height){
     this.height = height;
     this.node.style.width = `${this.width}px`
     this.node.style.height = `${this.height}px`
-    this.node.style.backgroundColor = "white"
     
 
     this.node.style.position = "absolute"

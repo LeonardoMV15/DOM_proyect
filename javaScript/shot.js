@@ -9,11 +9,11 @@ this.node = document.createElement("div")
 
     this.x = posX;
     this.y = posY;
-    this.width = 10;
-    this.height = 20;
+    this.width = 5;
+    this.height = 15;
     this.node.style.width = `${this.width}px`
     this.node.style.height = `${this.height}px`
-    this.node.style.backgroundColor = "white"
+    this.node.style.backgroundColor = "aqua"
     
 
     this.node.style.position = "absolute"
