@@ -10,7 +10,7 @@ const scoreBox = document.querySelector("#score")
 let playerObj
 let rockArray = []
 let shotArr = []
-let score 
+let score = 0
 
 function addRock(){
 
@@ -86,8 +86,8 @@ function checkCollisionPlayerEnemey(){
         if (checkCollision(shot, enemy)) {
             shot.node.remove();
             enemy.node.remove();
-            score++
-            addScore()
+            score+=5
+            addScore(score)
 
 
             shotArr.splice(shotIndex, 1);
@@ -126,7 +126,7 @@ function shot (){
 }
 
 
-function addScore(){
+function addScore(score){
 
         scoreBox.innerText = score
 

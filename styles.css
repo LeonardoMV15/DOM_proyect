@@ -123,6 +123,7 @@ margin: 0;
 height: 100dvh;
   position: relative; 
   overflow: hidden;  
-  user-select: none
+  user-select: none;
+  color: white;
   
 }
