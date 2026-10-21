@@ -4,20 +4,29 @@ const gameScreen = document.querySelector("#gameView")
 const endScreen = document.querySelector("#endView")
 const startBtn = document.querySelector("#startButton")
 const restartBtn = document.querySelector("#RestartButton")
-const scoreBox = document.querySelector("#score")
-
+const scoreBox = document.querySelector(".score")
+const resultBox = document.querySelector(".result")
 
 let playerObj
 let rockArray = []
 let shotArr = []
 let score = 0
+let enemyShipArr = []
+
 
 function addRock(){
 
-    let randomPosX = Math.floor(Math.random() * 550)
+    let randomPosX = Math.floor(Math.random() * window.innerWidth )
         let randomWidth = Math.floor(Math.random() * (75-50)+50)
         let newRock = new enemyRock(randomPosX , randomWidth, randomWidth )
         rockArray.push(newRock)
+}
+function addEnemyShip(){
+
+    let randomPosX = Math.floor(Math.random() * window.innerWidth )
+        
+        let newShip = new ship(randomPosX  )
+        enemyShipArr.push(newShip)
 }
 
 
@@ -33,9 +42,12 @@ function startGame(){
 
     addPlayer()
     addRock()
+    addEnemyShip()
       mainItervalId=setInterval(gameLoop, Math.round(1000 / 60))
 
     enemyItervalId=setInterval(addRock , 2000)
+    enemyShipItervalId=setInterval(addEnemyShip , 2000)
+
 
 }
 
@@ -46,8 +58,13 @@ function gameLoop() {
         })
         shotArr.forEach((shot) => {
             shot.automaticMovement()
+        
 
         })
+        enemyShipArr.forEach((ship) => {
+            ship.automaticMovement()
+        })
+
         checkRockDespawn()
             checkCollisionPlayerEnemey()
 
@@ -82,30 +99,67 @@ function checkCollisionPlayerEnemey(){
 
     for (let enemyIndex = rockArray.length - 1; enemyIndex >= 0; enemyIndex--) {
         const enemy = rockArray[enemyIndex];
+        
+        
 
-        if (checkCollision(shot, enemy)) {
+             if (checkCollision(shot, enemy)) {
             shot.node.remove();
             enemy.node.remove();
             score+=5
             addScore(score)
 
-
             shotArr.splice(shotIndex, 1);
             rockArray.splice(enemyIndex, 1);
             break;
-        }
+             }
+
+            
+        
     }
 }
+
+ enemyShipArr.forEach((enemy, i) =>{
+        if (checkCollision (enemy , playerObj)){
+            enemy.node.remove() 
+            enemyShipArr.splice ( i, 1)
+            gameOver()
+        }})
+ for (let shotIndex = shotArr.length - 1; shotIndex >= 0; shotIndex--) {
+    const shot = shotArr[shotIndex];
+
+for (let shipIndex = enemyShipArr.length - 1; shipIndex >= 0; shipIndex--) {
+        const enemyShip = enemyShipArr[shipIndex];
+
+if (checkCollision(shot, enemyShip)) {
+            shot.node.remove();
+            enemyShip.node.remove();
+            score+=10
+            addScore(score)
+
+
+            shotArr.splice(shotIndex, 1);
+            enemyShipArr.splice(shipIndex, 1);
+            break;
+            }
+        }
+    }
 }
 
 function gameOver(){
 
     rockArray.forEach((rock) => {rock.node.remove()})
     shotArr.forEach((shot) => {shot.node.remove()})
+    enemyShipArr.forEach((enemy) => {enemy.node.remove()})
+
     score = 0
+
+     scoreBox.innerText = score
+
 
     clearInterval(mainItervalId)
     clearInterval(enemyItervalId)
+    clearInterval(enemyShipItervalId)
+
 
     gameScreen.style.display ="none"
     endScreen.style.display ="flex"
@@ -129,6 +183,7 @@ function shot (){
 function addScore(score){
 
         scoreBox.innerText = score
+        resultBox.innerText = score
 
 }
 

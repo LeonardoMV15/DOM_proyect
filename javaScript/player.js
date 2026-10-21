@@ -33,8 +33,8 @@ moveUp(){
 
 }
 moveDown(){
-  console.log(window.innerHeight )
-   if( this.y >= window.innerHeight - this.height-20 ){
+
+  if( this.y >= window.innerHeight - this.height-20 ){
     return
   }
   this.y += this.speed;
@@ -51,7 +51,6 @@ moveLeft(){
 }
 moveRight(){
  
-console.log(this.x)
    if( this.x >= window.innerWidth - this.width - 20 ){
     return
   }
